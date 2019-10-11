@@ -1,0 +1,10 @@
+<!--view.ejs-->
+<table class="table">
+            <form action="/person/delete/<%= person.id %>" method="POST">
+                    <tr>
+                            <td><%= person.name %></td>
+                            <td><%= person.age %></td>
+                            <td><button type="submit" class="btn btn-danger">Delete</button></td>
+                    </tr>
+            </form>
+    </table>
