@@ -20,6 +20,11 @@ module.exports = {
       type: "number"
     },
 
+    worksFor: {
+      collection: 'User',
+      via: 'supervises'
+    },
+
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝

@@ -20,6 +20,12 @@ module.exports = {
       password: {
         type: "string"
       },
+
+
+  supervises: {
+    collection: 'Person',
+    via: 'worksFor'
+  },
     
   
       //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

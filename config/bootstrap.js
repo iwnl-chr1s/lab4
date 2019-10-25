@@ -27,6 +27,9 @@ module.exports.bootstrap = async function() {
   // ]);
   // ```
 
+  sails.bcrypt = require('bcryptjs');
+  const saltRounds = 10;
+
   if (await Person.count() == 0) {
 
     await Person.createEach([
@@ -39,13 +42,23 @@ module.exports.bootstrap = async function() {
 
 if (await User.count() == 0) {
 
-    await User.createEach([
-      { username: "admin", password: "123456" },
-      { username: "boss", password: "123456" }
+  const hash = await sails.bcrypt.hash('123456', saltRounds);
+
+  await User.createEach([
+      { username: "admin", password: hash },
+      { username: "boss", password: hash }
       // etc.
-    ]);
+  ]);
 
 }
+
+const martin = await Person.findOne({name: "Martin Choy"});
+const kenny = await Person.findOne({name: "Kenny Cheng"});
+const admin = await User.findOne({username: "admin"});
+const boss = await User.findOne({username: "boss"});
+
+await User.addToCollection(admin.id, 'supervises').members(kenny.id);
+await User.addToCollection(boss.id, 'supervises').members([martin.id, kenny.id]);
 
 return;
 
