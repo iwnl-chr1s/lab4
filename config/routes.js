@@ -29,6 +29,9 @@ module.exports.routes = {
   'POST /person/delete/:id': 'PersonController.delete',
   'GET /person/update/:id': 'PersonController.update',
   'POST /person/update/:id': 'PersonController.update',
+  'GET /user/login': 'UserController.login',
+  'POST /user/login': 'UserController.login',
+  'POST /user/logout': 'UserController.logout',
 
   /***************************************************************************
   *                                                                          *
